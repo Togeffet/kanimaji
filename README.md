@@ -1,5 +1,7 @@
 # Kanimaji #
 
+uchisen.com uses python scripts remixed from maurimo to generate the animated .svg files you can see on the individual kanji pages. Original kanji .svg files provided by the * [KanjiVG] (http://kanjivg.tagaini.net/) project.
+
 ## Generation of animations ##
 
 This is a small utility for transforming KanjiVG images into animated SVG or GIF files, or SVGs that can easily animated via Javascript (with no library dependency!).
@@ -43,8 +45,11 @@ where the files are KanjiVG SVG files (could work with other SVG files, but it h
 
 Just edit the settings.py file, all settings are explained there. In this file you can also enable/disable SVG, GIF, JS-SVG generation.
 
-## License ##
+## Licenses ##
 
-This software is formally released under MIT/BSD (at your option).
-You are free to do what you want with this program, please credit my work if you use it.
-If you find it useful and feel like, you may give a donation on my github page!
+Python scripts are formally released under MIT/BSD (at your option).
+You are free to do what you want with this program, please credit maurimo's work if you use it.
+If you find it useful and feel like, you may give a donation on their github page!
+
+Original .svg files are from * [KanjiVG] (http://kanjivg.tagaini.net/) project licensed by Ulrich Apel under the Creative Commons Attribution-Share Alike 3.0. 
+To comply with the share alike license I've made all derived .svgs available here (found in the animated/ folder) and original available in the kanji/ folder).
