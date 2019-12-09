@@ -1,6 +1,6 @@
 # Kanimaji #
 
-uchisen.com uses python scripts remixed from maurimo to generate the animated .svg files you can see on the individual kanji pages. Original kanji .svg files provided by the * [KanjiVG] (http://kanjivg.tagaini.net/) project.
+uchisen.com uses python scripts remixed from maurimo to generate the animated .svg files you can see on the individual kanji pages. Original kanji .svg files provided by the [KanjiVG](http://kanjivg.tagaini.net/) project.
 
 ## Generation of animations ##
 
@@ -51,5 +51,5 @@ Python scripts are formally released under MIT/BSD (at your option).
 You are free to do what you want with this program, please credit maurimo's work if you use it.
 If you find it useful and feel like, you may give a donation on their github page!
 
-Original .svg files are from * [KanjiVG] (http://kanjivg.tagaini.net/) project licensed by Ulrich Apel under the Creative Commons Attribution-Share Alike 3.0. 
+Original .svg files are from [KanjiVG](http://kanjivg.tagaini.net/) project licensed by Ulrich Apel under the Creative Commons Attribution-Share Alike 3.0. 
 To comply with the share alike license I've made all derived .svgs available here (found in the animated/ folder) and original available in the kanji/ folder).
