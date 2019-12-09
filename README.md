@@ -4,6 +4,18 @@ uchisen.com uses python scripts remixed from [maurimo](https://github.com/maurim
 Original kanji .svg files provided by the [KanjiVG](http://kanjivg.tagaini.net/) project.
 
 
+## Usage ##
+
+If you really want to generate your own animated .svgs, I'd highly recommend you go to the [original project](https://github.com/maurimo/kanimaji) and download it there, as that's set up for general use and provides great documentation on how to use it.
+
+
+But, if you still want to use this for some reason you should create a folder "kanji" at the root of this project and add any .svgs you want to convert there.
+
+Run the "run_script.py" script to change all kanji in the kanji/ folder into animated svgs.
+
+The delete_extra_files.py script just removes all kanji not found on uchisen from the kanji/ folder.
+
+
 ## Licenses ##
 
 Python scripts are formally released under MIT/BSD (at your option).
