@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import re, math, glob, os, sys, json
+import re, math, glob, os, sys, json, codecs
 from lxml import etree
 from lxml.builder import E
 from svg.path import parse_path
@@ -9,6 +9,7 @@ from os.path import basename, abspath
 from copy import deepcopy
 from textwrap import dedent as d
 import bezier_cubic
+
 from settings import *
 
 
@@ -392,10 +393,27 @@ def create_animation(filename):
     if GENERATE_SVG:
         style = E.style(animated_css, id="style-Kanimaji")
         doc.getroot().insert(0, style)
-        svgfile = filename_noext + '_anim.svg'
+
+        head, tail = os.path.split(filename_noext)
+
+        print(unichr(int(tail, 16)))
+
+        svgfile = 'animated/' + tail + '_animated.svg' #unichr(int(tail, 16)) + '_animated.svg'
+        finalsvgfile = 'animated/' + unichr(int(tail, 16)) + '_animated.svg'
+
+        print(svgfile)
+
+        from pathlib import Path
+
+        Path(svgfile).touch()
+
+        
+
         doc.write(svgfile, pretty_print=True)
         doc.getroot().remove(style)
-        print 'written %s' % svgfile
+        print ('written %s' % svgfile)
+
+        os.rename(svgfile, finalsvgfile)
 
     if GENERATE_GIF:
         svgframefiles = []
@@ -414,17 +432,17 @@ def create_animation(filename):
             doc.getroot().insert(0, style)
             doc.write(svgframefile, pretty_print=True)
             doc.getroot().remove(style)
-            print 'written %s' % svgframefile
+            print ('written %s' % svgframefile)
 
         # create json file
         svgexport_datafile = filename_noext_ascii+"_export_data.json"
         with open(svgexport_datafile,'w') as f:
             f.write(json.dumps(svgexport_data))
-        print 'created instructions %s' % svgexport_datafile
+        print ('created instructions %s' % svgexport_datafile)
 
         # run svgexport
         cmdline = 'svgexport %s' % shescape(svgexport_datafile)
-        print cmdline
+        print (cmdline)
         if os.system(cmdline) != 0:
             exit('Error running external command')
 
@@ -451,14 +469,14 @@ def create_animation(filename):
                     shescape(pngframefiles[-1]),
                     bgopts,
                     shescape(giffile_tmp1))
-        print cmdline
+        print (cmdline)
         if os.system(cmdline) != 0:
             exit('Error running external command')
 
         if DELETE_TEMPORARY_FILES:
             for f in pngframefiles:
                 os.remove(f)
-            print 'cleaned up.'
+            print ('cleaned up.')
 
         cmdline = ("convert %s \\( -clone 0--1 -background none "+
                    "+append -quantize transparent -colors 63 "+
@@ -466,7 +484,7 @@ def create_animation(filename):
                    "-map mpr:cmap %s") % (
                     shescape(giffile_tmp1),
                     shescape(giffile_tmp2))
-        print cmdline
+        print (cmdline)
         if os.system(cmdline) != 0:
             exit('Error running external command')
         if DELETE_TEMPORARY_FILES:
@@ -475,7 +493,7 @@ def create_animation(filename):
         cmdline = ("gifsicle -O3 %s -o %s") % (
                     shescape(giffile_tmp2),
                     shescape(giffile))
-        print cmdline
+        print (cmdline)
         if os.system(cmdline) != 0:
             exit('Error running external command')
         if DELETE_TEMPORARY_FILES:
@@ -503,7 +521,7 @@ def create_animation(filename):
         svgfile = filename_noext + '_js_anim.svg'
         doc.write(svgfile, pretty_print=True)
         doc.getroot().remove(style)
-        print 'written %s' % svgfile
+        print ('written %s' % svgfile)
 
 if GENERATE_GIF and GIF_BACKGROUND_COLOR == 'transparent' and not GIF_ALLOW_TRANSPARENT:
     exit(d("""
