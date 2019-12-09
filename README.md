@@ -11,9 +11,9 @@ If you really want to generate your own animated .svgs, I'd highly recommend you
 
 But, if you still want to use this for some reason you should create a folder "kanji" at the root of this project and add any .svgs you want to convert there.
 
-Run the "run_script.py" script to change all kanji in the kanji/ folder into animated svgs.
+Run run_script.py  to change all kanji in the kanji/ folder into animated svgs.
 
-The delete_extra_files.py script just removes all kanji not found on uchisen from the kanji/ folder.
+Running delete_extra_files.py script will remove all kanji not found on uchisen from the kanji/ folder.
 
 
 ## Licenses ##
